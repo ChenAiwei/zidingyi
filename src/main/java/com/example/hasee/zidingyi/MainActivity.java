@@ -43,9 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_leve1_home:
+                int startofset=0;
                 if (isleve2) {
+
+                    //同时关闭三级菜单
+                    if(isleve3){
+                        AnimationUtils.close(leve3,startofset);
+                        startofset+=200;
+                        isleve3=false;
+                    }
                     //关闭
-                    AnimationUtils.close(leve2);
+                    AnimationUtils.close(leve2,startofset);
                 } else {
                     //显示
                     AnimationUtils.start(leve2);
@@ -55,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_leve2_menu:
                 if (isleve3) {
                     //关闭
-                    AnimationUtils.close(leve3);
+                    AnimationUtils.close(leve3,0);
                 } else {
                     //显示
                     AnimationUtils.start(leve3);
